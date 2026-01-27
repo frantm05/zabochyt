@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Dobrovolník" as vol
+actor "Koordinátor" as coord
+actor "Anonym" as an 
+actor "Uživatel" as user
+
+rectangle "Doodle pro žáby (System)" {
+
+    ' Volunteer Cases
+    usecase "Zobrazit otevřené kampaně" as UC_View
+    usecase "Přihlásit se na směnu" as UC_RegisterShift
+    usecase "Můj harmonogram" as UC_MySchedule
+    usecase "Zobrazit podrobnosti o kampani" as UC_Details
+    usecase "Odhlásit se ze směny" as UC_LogOutShift
+
+    ' Coordinator Cases
+    usecase "Kampaně (CRUD)" as UC_ManageCamp
+    usecase "Lokality (CRUD)" as UC_ManageLoc
+    usecase "Směny (CRUD)" as UC_ManageShift
+    usecase "Uzavřít Kampaň" as UC_Close
+
+    ' Anonym cases
+    usecase "Přihlásit se" as UC_Login
+    usecase "Registrovat se" as UC_Register
+
+    ' User cases
+    usecase "Odhlásit se" as UC_LogOut
+    usecase "Profil (RUD)" as UC_Profil
+
+    ' Relationships
+    vol --> UC_View
+    vol --> UC_MySchedule
+    vol --> UC_Details 
+    vol --> UC_RegisterShift
+    vol --> UC_LogOutShift
+
+    coord --> UC_ManageCamp
+    coord --> UC_ManageLoc
+    coord --> UC_ManageShift
+    coord --> UC_Close
+
+    an --> UC_Login
+    an --> UC_Register
+
+    user --> UC_LogOut
+    user --> UC_Profil
+
+
+@enduml
