@@ -1,0 +1,6 @@
+@Zabochyt.Server_HostAddress = http://localhost:5279
+
+GET {{Zabochyt.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
