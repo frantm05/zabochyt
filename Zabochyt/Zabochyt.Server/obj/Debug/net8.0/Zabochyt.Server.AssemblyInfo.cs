@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Zabochyt.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c38e15cbbfaea15204a2fde0e415d494f8e4305")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+585667facc8b82b7557eb54cd64da64223bb0e36")]
 [assembly: System.Reflection.AssemblyProductAttribute("Zabochyt.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Zabochyt.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
