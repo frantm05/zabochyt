@@ -1,6 +1,0 @@
-@Zabychyt_HostAddress = http://localhost:5148
-
-GET {{Zabychyt_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

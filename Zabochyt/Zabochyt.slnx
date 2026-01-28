@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="zabochyt.client/zabochyt.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Zabochyt.Server/Zabochyt.Server.csproj" />
+</Solution>

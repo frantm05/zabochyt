@@ -1,4 +1,4 @@
-namespace Zabychyt
+namespace Zabochyt.Server
 {
     public class WeatherForecast
     {
