@@ -4,10 +4,9 @@ import LoginPage from './features/auth/LoginPage';
 import DashboardPage from './features/dashboard/DashboardPage';
 import MyShiftsPage from './features/schedule/pages/MyShiftsPage';
 import PlanningPage from './features/schedule/pages/PlanningPage';
+import UserProfilePage from './features/users/pages/UserProfilePage';
 import { AuthProvider, useAuth } from './features/auth/AuthContext';
 
-// --- PLACEHOLDERY (Zatím je necháme, budeme nahrazovat v další fázi) ---
-const Profile = () => <div style={{ padding: 20 }}><h1>Profil</h1></div>;
 
 // --- OCHRANA ROUT ---
 // Komponenta, která pustí dál jen přihlášeného uživatele
@@ -35,7 +34,7 @@ function App() {
                         <Route element={<LayoutWrapper />}>
                             <Route path="/" element={<Navigate to="/dashboard" replace />} />
                             <Route path="dashboard" element={<DashboardPage />} />
-                            <Route path="profil" element={<Profile />} />
+                            <Route path="profil" element={<UserProfilePage />} />
                             <Route path="moje-smeny" element={<MyShiftsPage />} />
                             <Route path="planovani" element={<PlanningPage />} />
                         </Route>

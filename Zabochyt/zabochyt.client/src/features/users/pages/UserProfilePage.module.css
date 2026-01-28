@@ -1,0 +1,115 @@
+﻿.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.headerTitle {
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-lg);
+}
+
+.section {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+    color: var(--color-text-main);
+    border-bottom: 2px solid #eee;
+    padding-bottom: var(--spacing-xs);
+}
+
+/* Avatar sekce */
+.avatarSection {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.avatarPreview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    border: 4px solid white;
+    box-shadow: 0 0 0 2px var(--color-border);
+}
+
+.colorPicker {
+    display: flex;
+    gap: 10px;
+}
+
+.colorOption {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px var(--color-border);
+    transition: transform 0.2s;
+}
+
+    .colorOption:hover, .colorOptionActive {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 2px var(--color-text-main);
+    }
+
+/* Formulář */
+.formGroup {
+    margin-bottom: var(--spacing-md);
+}
+
+.label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+}
+
+    .input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+
+.helperText {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.saveBtn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+    .saveBtn:hover {
+        background-color: var(--color-primary-hover);
+    }
