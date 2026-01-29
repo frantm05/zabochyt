@@ -1,12 +1,224 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\dto\\auth\\registersdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\dto\\auth\\registersdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\dto\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\dto\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\dto\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\dto\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\models\\timeslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\models\\timeslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|c:\\users\\lukastomanek\\source\\repos\\frantm05\\zabochyt\\zabochyt\\zabochyt.server\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC160A15-BE00-87B9-FBED-67275411F95F}|Zabochyt.Server\\Zabochyt.Server.csproj|solutionrelative:zabochyt.server\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:17:57.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\DTO\\Auth\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\DTO\\Auth\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\DTO\\Auth\\AuthResponseDto.cs",
+              "RelativeToolTip": "Zabochyt.Server\\DTO\\Auth\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:16:58.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\DTO\\Auth\\LoginDto.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\DTO\\Auth\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\DTO\\Auth\\LoginDto.cs",
+              "RelativeToolTip": "Zabochyt.Server\\DTO\\Auth\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:16:20.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegistersDto.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\DTO\\Auth\\RegistersDto.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\DTO\\Auth\\RegistersDto.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\DTO\\Auth\\RegistersDto.cs",
+              "RelativeToolTip": "Zabochyt.Server\\DTO\\Auth\\RegistersDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:14:53.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Program.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Program.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:29:04.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\appsettings.json",
+              "RelativeToolTip": "Zabochyt.Server\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-28T18:28:20.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:23:43.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Registration.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\Registration.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Models\\Registration.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\Registration.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Models\\Registration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:20:48.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TimeSlot.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\TimeSlot.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Models\\TimeSlot.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\TimeSlot.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Models\\TimeSlot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:20:30.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Location.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\Location.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Models\\Location.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\Location.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Models\\Location.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:20:10.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Models\\User.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:19:47.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Zabochyt.Server\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Zabochyt.Server\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:09:32.227Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
