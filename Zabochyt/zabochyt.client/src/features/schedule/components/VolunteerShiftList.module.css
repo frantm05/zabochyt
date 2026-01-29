@@ -1,0 +1,108 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.card {
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+    .card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+/* Modifikátory pro rùzné stavy */
+.cardAvailable {
+    border-left: 5px solid var(--color-primary); /* Zelená */
+}
+
+.cardSigned {
+    border-left: 5px solid var(--color-secondary); /* Oranžová/Žlutá */
+    background-color: #fffdf5;
+}
+
+.dateSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+}
+
+.time {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta {
+    flex: 1;
+    margin-left: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.location {
+    font-weight: 500;
+}
+
+.capacity {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.capacityFull {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.actionBtn {
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.btnSignUp {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+    .btnSignUp:hover {
+        background-color: var(--color-primary-hover);
+    }
+
+.btnCancel {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: #666;
+}
+
+    .btnCancel:hover {
+        background-color: #ffebee;
+        color: #d32f2f;
+        border-color: #ffcdd2;
+    }
+
+.btnDisabled {
+    background-color: #eee;
+    color: #999;
+    cursor: not-allowed;
+}
