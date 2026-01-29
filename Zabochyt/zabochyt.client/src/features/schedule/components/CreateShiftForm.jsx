@@ -1,5 +1,6 @@
 ﻿import { useState, useEffect } from 'react';
 import styles from './CreateShiftForm.module.css';
+import api from '../../../services/api';
 
 const CreateShiftForm = ({ onShiftCreated }) => {
     const [formData, setFormData] = useState({
@@ -33,24 +34,30 @@ const CreateShiftForm = ({ onShiftCreated }) => {
         setIsSubmitting(true);
 
         try {
-            // Simulace API volání
-            await new Promise(r => setTimeout(r, 600));
+            const startDateTime = new Date(`${formData.date}T${formData.startTime}`);
 
-            const newShift = {
-                id: Date.now(),
-                ...formData,
-                isOvernight: isOvernight,
-                currentVolunteers: 0,
-                volunteers: []
+            let endDateTime = new Date(`${formData.date}T${formData.endTime}`);
+            if (isOvernight) {
+                endDateTime.setDate(endDateTime.getDate() + 1);
+            }
+
+            const payload = {
+                start: startDateTime.toISOString(), 
+                end: endDateTime.toISOString(),
+                location: formData.location,
+                maxCapacity: parseInt(formData.capacity),
+                note: formData.note
             };
 
-            onShiftCreated(newShift);
+            await api.post('/timeslots', payload);
+
+            onShiftCreated();
 
             setFormData(prev => ({ ...prev, note: '' }));
-            alert("Termín vypsán! 🐸");
+            alert("Termín úspěšně vypsán! 🐸");
 
         } catch (error) {
-            console.error("Chyba", error);
+            console.error("Chyba vytvoření:", error);
             alert("Nepodařilo se vytvořit směnu.");
         } finally {
             setIsSubmitting(false);

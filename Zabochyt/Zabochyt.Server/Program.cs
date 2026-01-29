@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+ï»¿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Zabochyt.Server.Data;
@@ -7,14 +7,26 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. OPRAVA: Smazána duplicita, necháváme jen to správné pøipojení "DefaultConnection"
+// 1. OPRAVA: SmazÃ¡na duplicita, nechÃ¡vÃ¡me jen to sprÃ¡vnÃ© pÅ™ipojenÃ­ "DefaultConnection"
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") 
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
-// 2. JWT Autentizace (Pokud ji zatím nemáte nastavenou v appsettings, mùe to házet chybu, viz níe)
+// ADD CORS CONFIGURATION - FIX PORT TO 5173 â¬‡ï¸
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowViteApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173")  // Changed from 5174 to 5173
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
+// 2. JWT Autentizace (Pokud ji zatÃ­m nemÃ¡te nastavenou v appsettings, mÅ¯Å¾e to hÃ¡zet chybu, viz nÃ­Å¾e)
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-// Ošetøení, aby aplikace nespadla, pokud klíè v nastavení chybí (prozatím)
+// OÅ¡etÅ™enÃ­, aby aplikace nespadla, pokud klÃ­Ä v nastavenÃ­ chybÃ­ (prozatÃ­m)
 var keyString = jwtSettings["Key"];
 if (!string.IsNullOrEmpty(keyString)) 
 {
@@ -46,27 +58,34 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// 3. OPRAVA: Slouèení nastavení pro API i pro Clienta
+// 3. OPRAVA: SlouÄenÃ­ nastavenÃ­ pro API i pro Clienta
 
-app.UseDefaultFiles(); // Dùleité pro frontend
-app.UseStaticFiles();  // Dùleité pro frontend
+app.UseDefaultFiles(); // DÅ¯leÅ¾itÃ© pro frontend
+app.UseStaticFiles();  // DÅ¯leÅ¾itÃ© pro frontend
 
-// Swagger zapneme jen pøi vıvoji
+// Swagger zapneme jen pÅ™i vÃ½voji
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// DISABLE HTTPS REDIRECT IN DEVELOPMENT - only use in production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
-// Poøadí je dùleité: Nejdøív zjistit KDO to je (AuthN), pak CO mùe dìlat (AuthZ)
+// ENABLE CORS HERE - MUST BE BEFORE Authentication/Authorization â¬‡ï¸
+app.UseCors("AllowViteApp");
+
+// PoÅ™adÃ­ je dÅ¯leÅ¾itÃ©: NejdÅ™Ã­v zjistit KDO to je (AuthN), pak CO mÅ¯Å¾e dÄ›lat (AuthZ)
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// 4. OPRAVA: Toto zajistí, e kdy adresa není API, pošle se uivateli frontend (React/Blazor)
+// 4. OPRAVA: Toto zajistÃ­, Å¾e kdyÅ¾ adresa nenÃ­ API, poÅ¡le se uÅ¾ivateli frontend (React/Blazor)
 app.MapFallbackToFile("/index.html");
 
 app.Run();

@@ -1,6 +1,8 @@
 ﻿import { useState, useEffect, useMemo } from 'react';
 import VolunteerShiftList from '../components/VolunteerShiftList';
 import ShiftControls from '../components/ShiftControls';
+import api from '../../../services/api';
+import { mapShiftFromApi } from '../../../utils/dateMapper';
 
 const MyShiftsPage = () => {
     const [myShifts, setMyShifts] = useState([]);
@@ -11,15 +13,19 @@ const MyShiftsPage = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
 
     useEffect(() => {
-        const fetchData = async () => {
-            await new Promise(r => setTimeout(r, 500));
-            setMyShifts([
-                { id: 201, date: '2024-04-20', startTime: '18:00', endTime: '22:00', location: 'Lokalita B', capacity: 4, currentVolunteers: 2, note: 'Moje směna' },
-                { id: 202, date: '2024-05-15', startTime: '18:00', endTime: '22:00', location: 'Lokalita B', capacity: 4, currentVolunteers: 2, note: 'Další směna' }
-            ]);
-            setLoading(false);
+        const fetchMyShifts = async () => {
+            try {
+                // Endpoint, který vrací jen MOJE směny
+                const response = await api.get('/timeslots/my');
+                const formatted = response.data.map(mapShiftFromApi);
+                setMyShifts(formatted);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
         };
-        fetchData();
+        fetchMyShifts();
     }, []);
 
     const uniqueLocations = useMemo(() => [...new Set(myShifts.map(s => s.location))], [myShifts]);
@@ -58,10 +64,17 @@ const MyShiftsPage = () => {
         return result;
     }, [myShifts, locationFilter, viewMode, currentDate]);
 
+    // ODHLÁŠENÍ
     const handleCancel = async (shiftId) => {
         if (!confirm("Opravdu se odhlásit?")) return;
-        // API call...
-        setMyShifts(prev => prev.filter(s => s.id !== shiftId));
+
+        try {
+            await api.post(`/timeslots/${shiftId}/signoff`);
+            alert("Byli jste odhlášeni.");
+            setMyShifts(prev => prev.filter(s => s.id !== shiftId));
+        } catch (error) {
+            alert("Chyba při odhlašování.");
+        }
     };
 
     return (
