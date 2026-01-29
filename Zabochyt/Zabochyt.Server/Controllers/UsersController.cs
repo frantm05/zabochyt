@@ -23,36 +23,50 @@ namespace Zabochyt.Server.Controllers
         [HttpGet("profile")]
         public async Task<IActionResult> GetProfile()
         {
-            // 1. Získání ID z tokenu (bezpečnější metoda)
+            // 1. Získání ID z tokenu
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
                          ?? User.FindFirst("sub")?.Value;
 
-            if (string.IsNullOrEmpty(userId))
+            if (string.IsNullOrEmpty(userId) || !int.TryParse(userId, out int id))
             {
-                return BadRequest("Nelze identifikovat uživatele z tokenu.");
+                return BadRequest("Nelze identifikovat uživatele.");
             }
 
-            // 2. Načtení uživatele z DB
-            // Předpokládám, že Id je int. Pokud je string/Guid, odstraň int.Parse
-            if (!int.TryParse(userId, out int id)) return BadRequest("Špatný formát ID.");
-
-            var user = await _context.Users.FindAsync(id);
+            // 2. Načtení uživatele VČETNĚ historie směn
+            // Používáme Include, abychom měli přístup k datům pro výpočet
+            var user = await _context.Users
+                .Include(u => u.Registrations)
+                .ThenInclude(r => r.TimeSlot)
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
             {
                 return NotFound("Uživatel nenalezen.");
             }
 
-            // 3. Odeslání dat ve formátu, který čeká frontend
-            // (Včetně statistik - zatím natvrdo nebo dopočítané)
+            // 3. Výpočet statistik (Logika)
+            // Zajímá nás jen to, co už proběhlo (konec směny je v minulosti)
+            var completedShifts = user.Registrations
+                .Where(r => r.TimeSlot.End < DateTime.UtcNow) // Nebo DateTime.Now podle nastavení serveru
+                .Select(r => r.TimeSlot)
+                .ToList();
+
+            int shiftsCount = completedShifts.Count;
+
+            // Sečteme délku všech směn (TotalHours vrací double, zaokrouhlíme na 1 desetinné místo)
+            double totalHours = Math.Round(completedShifts.Sum(s => (s.End - s.Start).TotalHours), 1);
+
+            // 4. Odeslání dat
             var response = new
             {
                 email = user.Email,
                 nickname = user.Nickname,
                 phone = user.Phone,
-                avatarColor = "#2e7d32", // Pokud nemáš v DB, pošleme default
-                shiftsCompleted = 0,     // TODO: Dopočítat z DB
-                totalHours = 0           // TODO: Dopočítat z DB
+                avatarColor = user.AvatarColor,
+
+                // Zde posíláme vypočtené hodnoty
+                shiftsCompleted = shiftsCount,
+                totalHours = totalHours
             };
 
             return Ok(response);
@@ -71,7 +85,11 @@ namespace Zabochyt.Server.Controllers
             // Aktualizace polí
             user.Nickname = dto.Nickname;
             user.Phone = dto.Phone;
-            // AvatarColor tu zatím asi nemáš v modelu User, tak ho ignorujeme nebo přidej do DB
+
+            if (!string.IsNullOrEmpty(dto.AvatarColor))
+            {
+                user.AvatarColor = dto.AvatarColor;
+            }
 
             await _context.SaveChangesAsync();
             return Ok(new { message = "Profil aktualizován" });
