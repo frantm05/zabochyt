@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Zabochyt.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+585667facc8b82b7557eb54cd64da64223bb0e36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac1ae29b16821e913208d134b33b47878d459810")]
 [assembly: System.Reflection.AssemblyProductAttribute("Zabochyt.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Zabochyt.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -9,7 +9,6 @@ namespace Zabochyt.Server.Data
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users => Set<User>();
-        public DbSet<Location> Locations => Set<Location>();
         public DbSet<TimeSlot> TimeSlots => Set<TimeSlot>();
         public DbSet<Registration> Registrations => Set<Registration>();
 
