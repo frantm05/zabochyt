@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode'; // Oprava importu pro pojmenovaný export
+ï»¿import { createContext, useContext, useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode'; // Oprava importu pro pojmenovanÃ½ export
 import api from '../../services/api';
 
 const AuthContext = createContext(null);
@@ -9,13 +9,13 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Pøi startu zkusíme obnovit session z localStorage
+        // PÅ™i startu zkusÃ­me obnovit session z localStorage
         const token = localStorage.getItem('zabochyt_token');
         if (token) {
             try {
                 const decoded = jwtDecode(token);
-                // Zde pøedpokládám, že claims v tokenu mají standardní klíèe nebo tvé vlastní
-                // Upravíme podle reálného backendu. Èasto role bývá v klíèi role nebo "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+                // Zde pÅ™edpoklÃ¡dÃ¡m, Å¾e claims v tokenu majÃ­ standardnÃ­ klÃ­Äe nebo tvÃ© vlastnÃ­
+                // UpravÃ­me podle reÃ¡lnÃ©ho backendu. ÄŒasto role bÃ½vÃ¡ v klÃ­Äi role nebo "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
                 setUser({
                     id: decoded.sub || decoded.id,
                     email: decoded.email,
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
                     name: decoded.unique_name || decoded.name
                 });
             } catch (e) {
-                console.error("Neplatný token", e);
+                console.error("NeplatnÃ½ token", e);
                 localStorage.removeItem('zabochyt_token');
             }
         }
@@ -31,24 +31,34 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) => {
-        // Reálné volání na tvùj .NET Controller (napø. AuthController)
+        // ReÃ¡lnÃ© volÃ¡nÃ­ na tvÅ¯j .NET Controller (napÅ™. AuthController)
         // const response = await api.post('/auth/login', { email, password });
         // const { token } = response.data;
 
-        // --- SIMULACE (dokud nemáme bìžící backend endpoint) ---
-        // TODO: Až bude backend hotový, odkomentuj kód výše a smaž tuto simulaci
+        // --- SIMULACE (dokud nemÃ¡me bÄ›Å¾Ã­cÃ­ backend endpoint) ---
+        // TODO: AÅ¾ bude backend hotovÃ½, odkomentuj kÃ³d vÃ½Å¡e a smaÅ¾ tuto simulaci
         await new Promise(r => setTimeout(r, 800)); // Fake delay
 
         let fakeRole = 'dobrovolnik';
         if (email.includes('admin')) fakeRole = 'koordinator';
 
         const fakeToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.simulace";
-        const fakeUser = { email, role: fakeRole, name: 'Jan Žabák' };
+        const fakeUser = { email, role: fakeRole, name: 'Jan Å½abÃ¡k' };
 
-        // Uložení
+        // UloÅ¾enÃ­
         localStorage.setItem('zabochyt_token', fakeToken);
         setUser(fakeUser);
         return true;
+        // --- KONEC SIMULACE ---
+    };
+
+    const register = async (email, password, name) => {
+        // ReÃ¡lnÃ© volÃ¡nÃ­ na tvÅ¯j .NET Controller (napÅ™. AuthController)
+        // const response = await api.post('/auth/register', { email, password, name });
+        // return response.data;
+        // --- SIMULACE (dokud nemÃ¡me bÄ›Å¾Ã­cÃ­ backend endpoint) ---
+        await new Promise(r => setTimeout(r, 800)); // Fake delay
+        return { success: true };
         // --- KONEC SIMULACE ---
     };
 
@@ -60,6 +70,7 @@ export const AuthProvider = ({ children }) => {
     const value = {
         user,
         login,
+        register,
         logout,
         isAuthenticated: !!user,
         isCoordinator: user?.role === 'koordinator'

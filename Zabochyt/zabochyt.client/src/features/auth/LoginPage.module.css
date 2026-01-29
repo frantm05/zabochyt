@@ -1,11 +1,11 @@
-.container {
+Ôªø.container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: var(--color-bg-body);
     background-image: radial-gradient(var(--color-primary) 1px, transparent 1px);
-    background-size: 20px 20px; /* Jemn˝ teËkovan˝ vzor */
+    background-size: 20px 20px; /* Jemn√Ω teƒçkovan√Ω vzor */
 }
 
 .card {
@@ -84,3 +84,34 @@
     font-size: 0.9rem;
     text-align: center;
 }
+
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.toggleMode {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.linkButton {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-size: inherit;
+}
+
+    .linkButton:hover {
+        color: var(--color-primary-hover);
+    }

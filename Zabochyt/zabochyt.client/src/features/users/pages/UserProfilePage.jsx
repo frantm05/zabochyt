@@ -29,9 +29,9 @@ const UserProfilePage = () => {
             await new Promise(r => setTimeout(r, 600));
 
             setProfile({
-                nickname: user?.name || 'Ničema123',
+                nickname: 'Testovací objekt číslo 1',
                 email: user?.email || 'email@example.com',
-                phone: '777 123 456',
+                phone: '777 123',
                 avatarColor: '#2e7d32',
                 shiftsCompleted: 6, // Příklad: uživatel už má rank "Skokan"
                 totalHours: 24

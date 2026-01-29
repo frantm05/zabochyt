@@ -4,25 +4,44 @@ import { useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
+    // Stavy pro formulář
+    const [isRegistering, setIsRegistering] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [name, setName] = useState('');
+
+    // UI stavy
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { login } = useAuth();
+    const { login, register } = useAuth(); 
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        // Validace shody hesel při registraci
+        if (isRegistering && password !== confirmPassword) {
+            return setError('Hesla se neshodují.');
+        }
+
         setIsSubmitting(true);
 
         try {
-            await login(email, password);
-            // Po úspěšném loginu přesměruj
-            navigate('/dashboard');
+            if (isRegistering) {
+                // Volání registrace
+                await register(email, password, name);
+                alert('Registrace úspěšná! Nyní se můžete přihlásit.');
+                setIsRegistering(false); // Přepneme na login
+            } else {
+                // Volání loginu
+                await login(email, password);
+                navigate('/dashboard');
+            }
         } catch (err) {
-            setError('Přihlášení se nezdařilo. Zkontrolujte údaje.');
+            setError(err.message || 'Akce se nezdařila. Zkontrolujte údaje.');
         } finally {
             setIsSubmitting(false);
         }
@@ -32,10 +51,27 @@ const LoginPage = () => {
         <div className={styles.container}>
             <div className={styles.card}>
                 <h1 className={styles.title}>🐸 Zabochyt</h1>
+                <h2 className={styles.subtitle}>
+                    {isRegistering ? 'Vytvořit účet' : 'Vítejte zpět'}
+                </h2>
 
                 {error && <div className={styles.error}>{error}</div>}
 
                 <form onSubmit={handleSubmit}>
+                    {isRegistering && (
+                        <div className={styles.formGroup}>
+                            <label className={styles.label}>Jméno</label>
+                            <input
+                                type="text"
+                                className={styles.input}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                placeholder="Tvé jméno"
+                            />
+                        </div>
+                    )}
+
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Email</label>
                         <input
@@ -59,18 +95,47 @@ const LoginPage = () => {
                         />
                     </div>
 
+                    {isRegistering && (
+                        <div className={styles.formGroup}>
+                            <label className={styles.label}>Potvrzení hesla</label>
+                            <input
+                                type="password"
+                                className={styles.input}
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                    )}
+
                     <button
                         type="submit"
                         className={styles.button}
                         disabled={isSubmitting}
                     >
-                        {isSubmitting ? 'Přihlašování...' : 'Přihlásit se'}
+                        {isSubmitting
+                            ? 'Pracuji...'
+                            : (isRegistering ? 'Zaregistrovat se' : 'Přihlásit se')}
                     </button>
                 </form>
 
-                <p style={{ textAlign: 'center', marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
-                    Tip: Pro admina použij email obsahující "admin".
-                </p>
+                <div className={styles.toggleMode}>
+                    {isRegistering ? (
+                        <p>
+                            Již máte účet? {' '}
+                            <button onClick={() => setIsRegistering(false)} className={styles.linkButton}>
+                                Přihlaste se
+                            </button>
+                        </p>
+                    ) : (
+                        <p>
+                            Nemáte účet? {' '}
+                            <button onClick={() => setIsRegistering(true)} className={styles.linkButton}>
+                                Vytvořit registraci
+                            </button>
+                        </p>
+                    )}
+                </div>
             </div>
         </div>
     );
