@@ -1,4 +1,4 @@
-/* src/layouts/MainLayout/MainLayout.module.css */
+Ôªø/* src/layouts/MainLayout/MainLayout.module.css */
 .container {
     display: flex;
     height: 100vh;
@@ -13,13 +13,13 @@
     display: flex;
     flex-direction: column;
     padding: var(--spacing-md);
-    flex-shrink: 0; /* Sidebar se nesmÌ zmenöovat */
+    flex-shrink: 0; /* Sidebar se nesm√≠ zmen≈°ovat */
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--color-primary); /* Zelen· û·ba */
+    color: var(--color-primary); /* Zelen√° ≈æ√°ba */
     margin-bottom: var(--spacing-xl);
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     text-decoration: none;
-    color: #a0b0a5; /* Tlumen· barva */
+    color: #a0b0a5; /* Tlumen√° barva */
     transition: all 0.2s ease;
     cursor: pointer;
 }
@@ -59,7 +59,26 @@
 
 .contentArea {
     flex: 1;
-    overflow-y: auto; /* Obsah roluje, sidebar stojÌ */
+    overflow-y: auto; /* Obsah roluje, sidebar stoj√≠ */
     padding: var(--spacing-xl);
     background-color: var(--color-bg-body);
+}
+
+.logoutButton {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+    background: var(--color-primary);
+    color: white;
 }

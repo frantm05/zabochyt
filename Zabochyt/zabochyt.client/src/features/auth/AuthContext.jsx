@@ -1,5 +1,5 @@
 ﻿import { createContext, useContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode'; // Oprava importu pro pojmenovaný export
+import { jwtDecode } from 'jwt-decode'; 
 import api from '../../services/api';
 
 const AuthContext = createContext(null);

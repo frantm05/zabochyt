@@ -1,9 +1,19 @@
 ﻿// src/layouts/MainLayout/MainLayout.jsx
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../features/auth/AuthContext';
 import styles from './MainLayout.module.css';
 
-// Poznámka: Role budeme později tahat z AuthContextu
-const MainLayout = ({ userRole = 'dobrovolnik' }) => {
+const MainLayout = () => {
+    const { user, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+
+    const userRole = user?.role || 'dobrovolnik';
+
     return (
         <div className={styles.container}>
             {/* LEVÝ SIDEBAR */}
@@ -50,7 +60,16 @@ const MainLayout = ({ userRole = 'dobrovolnik' }) => {
                     >
                         👤 Můj Profil
                     </NavLink>
+                    
+                    
                 </div>
+                {/* Sign Out Button */}
+                <button
+                    onClick={handleLogout}
+                    className={styles.logoutButton}
+                >
+                    🚪 Odhlásit se
+                </button>
             </aside>
 
             {/* HLAVNÍ OBSAH */}
