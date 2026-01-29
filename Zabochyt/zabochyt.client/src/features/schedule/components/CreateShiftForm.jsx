@@ -83,16 +83,14 @@ const CreateShiftForm = ({ onShiftCreated }) => {
                     </div>
                     <div className={styles.col}>
                         <label className={styles.label}>Místo</label>
-                        <select
+                        <textarea
                             name="location"
+                            rows="1"
                             className={styles.select}
                             value={formData.location}
                             onChange={handleChange}
                         >
-                            <option>Lokalita A - Rybník</option>
-                            <option>Lokalita B - Silnice u lesa</option>
-                            <option>Lokalita C - Mokřad</option>
-                        </select>
+                        </textarea>
                     </div>
                 </div>
 

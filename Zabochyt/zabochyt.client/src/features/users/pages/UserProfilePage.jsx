@@ -35,7 +35,6 @@ const UserProfilePage = () => {
                     email: data.email || '',
                     phone: data.phone || '',
                     avatarColor: data.avatarColor || '#2e7d32',
-                    // Backend zatím neposílá statistiky, dáme defaultně 0, aby to nepadalo
                     shiftsCompleted: data.shiftsCompleted || 0,
                     totalHours: data.totalHours || 0
                 });
