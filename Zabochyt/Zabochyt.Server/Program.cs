@@ -3,35 +3,42 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Zabochyt.Server.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DbContext
+// 1. OPRAVA: Smazána duplicita, necháváme jen to správné pøipojení "DefaultConnection"
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") 
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
-// JWT
+// 2. JWT Autentizace (Pokud ji zatím nemáte nastavenou v appsettings, mùže to házet chybu, viz níže)
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+// Ošetøení, aby aplikace nespadla, pokud klíè v nastavení chybí (prozatím)
+var keyString = jwtSettings["Key"];
+if (!string.IsNullOrEmpty(keyString)) 
+{
+    var key = Encoding.ASCII.GetBytes(keyString);
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    builder.Services.AddAuthentication(options =>
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateIssuerSigningKey = true,
-        ValidateLifetime = true,
-        ValidIssuer = jwtSettings["Issuer"],
-        ValidAudience = jwtSettings["Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidateLifetime = true,
+            ValidIssuer = jwtSettings["Issuer"],
+            ValidAudience = jwtSettings["Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(key)
+        };
+    });
+}
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -39,30 +46,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+// 3. OPRAVA: Slouèení nastavení pro API i pro Clienta
 
-app.UseHttpsRedirection();
+app.UseDefaultFiles(); // Dùležité pro frontend
+app.UseStaticFiles();  // Dùležité pro frontend
 
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
-
-
-/*
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-// Configure the HTTP request pipeline.
+// Swagger zapneme jen pøi vývoji
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -71,12 +60,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Poøadí je dùležité: Nejdøív zjistit KDO to je (AuthN), pak CO mùže dìlat (AuthZ)
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
+// 4. OPRAVA: Toto zajistí, že když adresa není API, pošle se uživateli frontend (React/Blazor)
 app.MapFallbackToFile("/index.html");
 
 app.Run();
- */
-//
