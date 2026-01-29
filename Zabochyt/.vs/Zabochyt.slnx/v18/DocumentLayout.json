@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\services\\api.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\services\\api.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\auth\\authcontext.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\auth\\authcontext.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\auth\\loginpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\auth\\loginpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\auth\\loginpage.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\auth\\loginpage.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\users\\pages\\userprofilepage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\users\\pages\\userprofilepage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\users\\components\\userstats.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\users\\components\\userstats.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\users\\pages\\userprofilepage.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -15,20 +35,12 @@
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\users\\components\\userstats.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\users\\components\\userstats.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\users\\components\\userstats.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\dashboard\\dashboardpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\dashboard\\dashboardpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\services\\api.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\services\\api.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\schedule\\pages\\myshiftspage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -59,10 +71,6 @@
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\schedule\\components\\shiftlist.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\auth\\loginpage.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\auth\\loginpage.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\layouts\\mainlayout\\mainlayout.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\layouts\\mainlayout\\mainlayout.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
@@ -83,14 +91,6 @@
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\schedule\\pages\\planningpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\auth\\loginpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\auth\\loginpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\features\\auth\\authcontext.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\features\\auth\\authcontext.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|c:\\users\\mat\u011Bj frant\u00EDk\\documents\\github\\zabochyt\\zabochyt\\zabochyt.client\\src\\layouts\\mainlayout\\mainlayout.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F8E2F325-C993-A28D-9ADF-3CDB2A080D33}|zabochyt.client\\zabochyt.client.esproj|solutionrelative:zabochyt.client\\src\\layouts\\mainlayout\\mainlayout.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
@@ -102,24 +102,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "UserProfilePage.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\pages\\UserProfilePage.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\users\\pages\\UserProfilePage.jsx",
               "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\pages\\UserProfilePage.jsx",
               "RelativeToolTip": "zabochyt.client\\src\\features\\users\\pages\\UserProfilePage.jsx",
-              "ViewState": "AgIAABcAAADANTMzM7MSwCgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAAB8AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-01-28T23:06:45.048Z",
+              "WhenOpened": "2026-01-28T23:06:45.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "api.js",
+              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\services\\api.js",
+              "RelativeDocumentMoniker": "zabochyt.client\\src\\services\\api.js",
+              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\services\\api.js",
+              "RelativeToolTip": "zabochyt.client\\src\\services\\api.js",
+              "ViewState": "AgIAAAsAAADgMjMzM7MiwBgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-28T21:33:03.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AuthContext.jsx",
+              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
+              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
+              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
+              "RelativeToolTip": "zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2026-01-28T21:34:21.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginPage.jsx",
+              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
+              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
+              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
+              "RelativeToolTip": "zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAswIoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2026-01-28T21:36:09.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginPage.module.css",
+              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
+              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
+              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
+              "RelativeToolTip": "zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwHQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-28T21:35:42.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserStats.jsx",
+              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
+              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
+              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
+              "RelativeToolTip": "zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2026-01-28T23:05:11.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "UserProfilePage.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\pages\\UserProfilePage.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\users\\pages\\UserProfilePage.module.css",
@@ -131,19 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserStats.jsx",
-              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
-              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
-              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
-              "RelativeToolTip": "zabochyt.client\\src\\features\\users\\components\\UserStats.jsx",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAIwCgAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-01-28T23:05:11.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "UserStats.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\users\\components\\UserStats.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\users\\components\\UserStats.module.css",
@@ -155,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "MyShiftsPage.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\pages\\MyShiftsPage.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\pages\\MyShiftsPage.jsx",
@@ -167,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "VolunteerShiftList.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\components\\VolunteerShiftList.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\components\\VolunteerShiftList.module.css",
@@ -179,7 +227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "App.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\App.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\App.jsx",
@@ -191,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "VolunteerShiftList.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\components\\VolunteerShiftList.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\components\\VolunteerShiftList.jsx",
@@ -203,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "PlanningPage.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\pages\\PlanningPage.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\pages\\PlanningPage.jsx",
@@ -215,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ShiftList.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\components\\ShiftList.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\components\\ShiftList.jsx",
@@ -227,19 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "api.js",
-              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\services\\api.js",
-              "RelativeDocumentMoniker": "zabochyt.client\\src\\services\\api.js",
-              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\services\\api.js",
-              "RelativeToolTip": "zabochyt.client\\src\\services\\api.js",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBgAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-01-28T21:33:03.835Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "DashboardPage.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\dashboard\\DashboardPage.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\dashboard\\DashboardPage.jsx",
@@ -251,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "PlanningPage.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\pages\\PlanningPage.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\pages\\PlanningPage.module.css",
@@ -263,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ShiftList.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\components\\ShiftList.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\components\\ShiftList.module.css",
@@ -275,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "CreateShiftForm.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\components\\CreateShiftForm.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\components\\CreateShiftForm.jsx",
@@ -287,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "CreateShiftForm.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\schedule\\components\\CreateShiftForm.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\schedule\\components\\CreateShiftForm.module.css",
@@ -296,42 +332,6 @@
               "ViewState": "AgIAAC0AAAAAAAAAAAAiwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-01-28T21:40:27.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "LoginPage.jsx",
-              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
-              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
-              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
-              "RelativeToolTip": "zabochyt.client\\src\\features\\auth\\LoginPage.jsx",
-              "ViewState": "AgIAADEAAAAAAAAAAAAwwEQAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-01-28T21:36:09.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "LoginPage.module.css",
-              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
-              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
-              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
-              "RelativeToolTip": "zabochyt.client\\src\\features\\auth\\LoginPage.module.css",
-              "ViewState": "AgIAADgAAAAAAAAAAAAiwFYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-01-28T21:35:42.275Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AuthContext.jsx",
-              "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
-              "RelativeDocumentMoniker": "zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
-              "ToolTip": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
-              "RelativeToolTip": "zabochyt.client\\src\\features\\auth\\AuthContext.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-01-28T21:34:21.036Z"
             },
             {
               "$type": "Document",
@@ -347,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "MainLayout.module.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\layouts\\MainLayout\\MainLayout.module.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\layouts\\MainLayout\\MainLayout.module.css",
@@ -359,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "main.jsx",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\main.jsx",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\main.jsx",
@@ -371,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "variables.css",
               "DocumentMoniker": "C:\\Users\\Mat\u011Bj Frant\u00EDk\\Documents\\GitHub\\zabochyt\\Zabochyt\\zabochyt.client\\src\\shared\\styles\\variables.css",
               "RelativeDocumentMoniker": "zabochyt.client\\src\\shared\\styles\\variables.css",
