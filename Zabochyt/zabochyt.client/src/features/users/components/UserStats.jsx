@@ -3,7 +3,6 @@ import clsx from 'clsx';
 
 const UserStats = ({ shiftsCompleted, totalHours }) => {
 
-    // Jednoduchá gamifikace - výpočet hodnosti
     const getRank = (count) => {
         if (count >= 20) return { title: 'Žabí Král', icon: '👑' };
         if (count >= 10) return { title: 'Zachránce', icon: '🦸‍♂️' };

@@ -1,5 +1,4 @@
-﻿/* src/layouts/MainLayout/MainLayout.module.css */
-.container {
+﻿.container {
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -13,13 +12,13 @@
     display: flex;
     flex-direction: column;
     padding: var(--spacing-md);
-    flex-shrink: 0; /* Sidebar se nesmí zmenšovat */
+    flex-shrink: 0; 
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--color-primary); /* Zelená žába */
+    color: var(--color-primary);
     margin-bottom: var(--spacing-xl);
     display: flex;
     align-items: center;
@@ -37,13 +36,14 @@
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     text-decoration: none;
-    color: #a0b0a5; /* Tlumená barva */
+    color: #a0b0a5; 
+    background-color: rgba(205, 255, 205, 0.1);
     transition: all 0.2s ease;
     cursor: pointer;
 }
 
     .navItem:hover, .navItemActive {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(55, 105, 55, 0.3);
         color: var(--color-text-light);
     }
 
@@ -51,15 +51,11 @@
     border-left: 4px solid var(--color-primary);
 }
 
-.userProfile {
-    margin-top: auto;
-    padding-top: var(--spacing-md);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+
 
 .contentArea {
     flex: 1;
-    overflow-y: auto; /* Obsah roluje, sidebar stojí */
+    overflow-y: auto; 
     padding: var(--spacing-xl);
     background-color: var(--color-bg-body);
 }

@@ -1,5 +1,4 @@
-﻿// src/layouts/MainLayout/MainLayout.jsx
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+﻿import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/AuthContext';
 import styles from './MainLayout.module.css';
 
@@ -24,6 +23,13 @@ const MainLayout = () => {
 
                 <nav className={styles.nav}>
                     {/* Společné linky */}
+                    <NavLink
+                        to="/profil"
+                        className={({ isActive }) => isActive ? `${styles.navItem} ${styles.navItemActive}` : styles.navItem}
+                    >
+                        Můj Profil
+                    </NavLink>
+
                     <NavLink
                         to="/dashboard"
                         className={({ isActive }) => isActive ? `${styles.navItem} ${styles.navItemActive}` : styles.navItem}
@@ -52,17 +58,6 @@ const MainLayout = () => {
                     )}
                 </nav>
 
-                {/* Editace profilu v sidebaru (Požadavek 3) */}
-                <div className={styles.userProfile}>
-                    <NavLink
-                        to="/profil"
-                        className={({ isActive }) => isActive ? `${styles.navItem} ${styles.navItemActive}` : styles.navItem}
-                    >
-                        👤 Můj Profil
-                    </NavLink>
-                    
-                    
-                </div>
                 {/* Sign Out Button */}
                 <button
                     onClick={handleLogout}
@@ -72,9 +67,7 @@ const MainLayout = () => {
                 </button>
             </aside>
 
-            {/* HLAVNÍ OBSAH */}
             <main className={styles.contentArea}>
-                {/* Outlet renderuje child route */}
                 <Outlet />
             </main>
         </div>

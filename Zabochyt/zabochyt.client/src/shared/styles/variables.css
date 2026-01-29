@@ -1,10 +1,10 @@
-:root {
-    /* Paleta Zabochyt - Pøírodní/Žabí tóny */
-    --color-primary: #2e7d32; /* Hlavní zelená */
+ï»¿:root {
+    /* Paleta Zabochyt */
+    --color-primary: #2e7d32; /* HlavnÃ­ zelenÃ¡ */
     --color-primary-hover: #1b5e20;
-    --color-secondary: #ffab00; /* Akcentní oranžová (varování/akce) */
-    --color-bg-body: #f4f7f6; /* Jemnì šedé pozadí */
-    --color-bg-sidebar: #1c2520; /* Tmavý sidebar */
+    --color-secondary: #ffab00; /* AkcentnÃ­ oranÅ¾ovÃ¡ (varovÃ¡nÃ­/akce) */
+    --color-bg-body: #f4f7f6; /* JemnÄ› Å¡edÃ© pozadÃ­ */
+    --color-bg-sidebar: #1c2520; /* TmavÃ½ sidebar */
     --color-text-main: #333333;
     --color-text-light: #ffffff;
     --color-border: #e0e0e0;

@@ -9,13 +9,12 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Při startu zkusíme obnovit session z localStorage
         const token = localStorage.getItem('zabochyt_token');
         if (token) {
             try {
                 const decoded = jwtDecode(token);
                 // Zde předpokládám, že claims v tokenu mají standardní klíče nebo tvé vlastní
-                // Upravíme podle reálného backendu. Často role bývá v klíči role nebo "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+                // Role bývá v klíči role nebo "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
                 setUser({
                     id: decoded.sub || decoded.id,
                     email: decoded.email,

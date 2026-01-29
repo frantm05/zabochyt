@@ -1,63 +1,128 @@
-﻿import styles from './VolunteerShiftList.module.css';
-import clsx from 'clsx'; // Utility pro spojování tříd (nainstalovali jsme v kroku 1)
+﻿import { useState } from 'react';
+import styles from './VolunteerShiftList.module.css';
+import clsx from 'clsx';
 
 const VolunteerShiftList = ({ shifts, variant = 'available', onAction }) => {
+    const [expandedId, setExpandedId] = useState(null);
 
     if (!shifts || shifts.length === 0) {
-        return <div style={{ padding: 20, textAlign: 'center', color: '#888' }}>
-            {variant === 'available' ? 'Žádné volné termíny.' : 'Zatím nemáte naplánované žádné směny.'}
+        return <div className={styles.emptyState}>
+            {variant === 'available' ? 'Žádné volné termíny v tomto zobrazení.' : 'Zatím nemáte naplánované žádné směny.'}
         </div>;
     }
 
+    // 1. Seskupení podle MĚSÍCŮ
+    const groupedByMonth = shifts.reduce((groups, shift) => {
+        const date = new Date(shift.date);
+        const key = `${date.getFullYear()}-${date.getMonth()}`;
+        if (!groups[key]) {
+            groups[key] = { dateObj: date, items: [] };
+        }
+        groups[key].items.push(shift);
+        return groups;
+    }, {});
+
+    const toggleExpand = (id) => setExpandedId(expandedId === id ? null : id);
+
     return (
-        <div className={styles.listContainer}>
-            {shifts.map(shift => {
-                const isFull = shift.currentVolunteers >= shift.capacity;
-                // Pokud je varianta 'available' a je plno, tlačítko bude disabled
-                const canSignUp = variant === 'available' && !isFull;
+        <div className={styles.calendarContainer}>
+            {Object.keys(groupedByMonth).map(monthKey => {
+                const group = groupedByMonth[monthKey];
+                const monthTitle = group.dateObj.toLocaleDateString('cs-CZ', { month: 'long', year: 'numeric' });
+
+                // 2. Seskupení podle DNE
+                const shiftsByDay = group.items.reduce((days, shift) => {
+                    const dayKey = shift.date;
+                    if (!days[dayKey]) days[dayKey] = [];
+                    days[dayKey].push(shift);
+                    return days;
+                }, {});
+
+                const sortedDays = Object.keys(shiftsByDay).sort();
 
                 return (
-                    <div
-                        key={shift.id}
-                        className={clsx(styles.card, variant === 'available' ? styles.cardAvailable : styles.cardSigned)}
-                    >
-                        {/* Datum a Čas */}
-                        <div className={styles.dateSection}>
-                            <span className={styles.date}>
-                                {new Date(shift.date).toLocaleDateString('cs-CZ', { weekday: 'short', day: 'numeric', month: 'numeric' })}
-                            </span>
-                            <span className={styles.time}>
-                                🕒 {shift.startTime} - {shift.endTime}
-                            </span>
-                        </div>
+                    <div key={monthKey} className={styles.monthSection}>
+                        <div className={styles.monthHeader}>{monthTitle}</div>
 
-                        {/* Detaily */}
-                        <div className={styles.meta}>
-                            <span className={styles.location}>📍 {shift.location}</span>
-                            <span className={clsx(styles.capacity, isFull && styles.capacityFull)}>
-                                👥 {shift.currentVolunteers} / {shift.capacity} dobrovolníků
-                            </span>
-                            {shift.note && <span style={{ fontSize: '0.8rem', color: '#888' }}>ℹ️ {shift.note}</span>}
-                        </div>
+                        <div className={styles.monthGrid}>
+                            {sortedDays.map(dayKey => {
+                                const dayShifts = shiftsByDay[dayKey];
+                                const dateObj = new Date(dayKey);
 
-                        {/* Akce */}
-                        <div>
-                            {variant === 'available' ? (
-                                <button
-                                    className={clsx(styles.actionBtn, canSignUp ? styles.btnSignUp : styles.btnDisabled)}
-                                    onClick={() => canSignUp && onAction(shift.id)}
-                                    disabled={!canSignUp}
-                                >
-                                    {isFull ? 'Obsazeno' : 'Přihlásit se'}
-                                </button>
-                            ) : (
-                                <button
-                                    className={clsx(styles.actionBtn, styles.btnCancel)}
-                                    onClick={() => onAction(shift.id)}
-                                >
-                                    Omluvit se
-                                </button>
-                            )}
+                                return (
+                                    <div key={dayKey} className={styles.dayRow}>
+
+                                        {/* Datum (levý sloupec) */}
+                                        <div className={styles.dateBox}>
+                                            <span className={styles.dayName}>
+                                                {dateObj.toLocaleDateString('cs-CZ', { weekday: 'short' })}
+                                            </span>
+                                            <span className={styles.dayNumber}>
+                                                {dateObj.getDate()}
+                                            </span>
+                                        </div>
+
+                                        {/* Stack karet (pravý sloupec) */}
+                                        <div className={styles.shiftsStack}>
+                                            {dayShifts.map(shift => {
+                                                const isFull = shift.currentVolunteers >= shift.capacity;
+                                                const canSignUp = variant === 'available' && !isFull;
+                                                const isExpanded = expandedId === shift.id;
+
+                                                return (
+                                                    <div
+                                                        key={shift.id}
+                                                        className={clsx(
+                                                            styles.shiftCard,
+                                                            variant === 'available' ? styles.cardAvailable : styles.cardSigned,
+                                                            isExpanded && styles.expanded
+                                                        )}
+                                                        onClick={() => toggleExpand(shift.id)}
+                                                    >
+                                                        <div className={styles.cardHeader}>
+                                                            <div className={styles.timeInfo}>
+                                                                <span className={styles.timeBadge}>{shift.startTime} - {shift.endTime}</span>
+                                                                <strong className={styles.locationTitle}>{shift.location}</strong>
+                                                            </div>
+
+                                                            <div className={styles.cardActions}>
+                                                                <span className={clsx(styles.capacityInfo, isFull && styles.fullCapacity)}>
+                                                                    👥 {shift.currentVolunteers}/{shift.capacity}
+                                                                </span>
+
+                                                                {/* Tlačítko akce */}
+                                                                {variant === 'available' ? (
+                                                                    <button
+                                                                        className={clsx(styles.actionBtn, canSignUp ? styles.btnSignUp : styles.btnDisabled)}
+                                                                        onClick={(e) => { e.stopPropagation(); canSignUp && onAction(shift.id); }}
+                                                                        disabled={!canSignUp}
+                                                                    >
+                                                                        {isFull ? 'Plno' : 'Přihlásit'}
+                                                                    </button>
+                                                                ) : (
+                                                                    <button
+                                                                        className={clsx(styles.actionBtn, styles.btnCancel)}
+                                                                        onClick={(e) => { e.stopPropagation(); onAction(shift.id); }}
+                                                                    >
+                                                                        Omluvit
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Detail (Poznámka) */}
+                                                        {isExpanded && shift.note && (
+                                                            <div className={styles.cardDetail}>
+                                                                <div className={styles.note}>ℹ️ {shift.note}</div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 );

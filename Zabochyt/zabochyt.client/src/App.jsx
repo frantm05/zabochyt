@@ -8,15 +8,12 @@ import UserProfilePage from './features/users/pages/UserProfilePage';
 import { AuthProvider, useAuth } from './features/auth/AuthContext';
 
 
-// --- OCHRANA ROUT ---
-// Komponenta, která pustí dál jen přihlášeného uživatele
 const ProtectedRoute = () => {
     const { isAuthenticated } = useAuth();
     if (!isAuthenticated) return <Navigate to="/login" replace />;
     return <Outlet />;
 };
 
-// Komponenta pro layout, která předá userRole do MainLayoutu
 const LayoutWrapper = () => {
     const { user } = useAuth();
     return <MainLayout userRole={user?.role} />;
@@ -29,7 +26,6 @@ function App() {
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
 
-                    {/* Protected Routes */}
                     <Route element={<ProtectedRoute />}>
                         <Route element={<LayoutWrapper />}>
                             <Route path="/" element={<Navigate to="/dashboard" replace />} />
