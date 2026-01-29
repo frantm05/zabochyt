@@ -1,0 +1,190 @@
+﻿.calendarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.monthHeader {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 0;
+    background: #f4f7f6;
+    z-index: 10;
+}
+
+.dayRow {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.dateBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    height: 60px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+    position: sticky;
+    top: 60px;
+}
+
+.dayName {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+}
+
+.dayNumber {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    line-height: 1;
+}
+
+.shiftsStack {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shiftCard {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+    .shiftCard:hover {
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+    }
+
+.cardAvailable {
+    border-left: 4px solid var(--color-primary);
+}
+
+.cardSigned {
+    border-left: 4px solid var(--color-secondary);
+    background-color: #fffdf5;
+}
+
+.cardHeader {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.timeInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.timeBadge {
+    background: #eef5e9;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.locationTitle {
+    font-size: 1rem;
+    color: #333;
+}
+
+.cardActions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.capacityInfo {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.fullCapacity {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.actionBtn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.btnSignUp {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+    .btnSignUp:hover {
+        background-color: var(--color-primary-hover);
+    }
+
+.btnCancel {
+    background-color: transparent;
+    border: 1px solid #ffcdd2;
+    color: #d32f2f;
+}
+
+    .btnCancel:hover {
+        background-color: #ffebee;
+    }
+
+.btnDisabled {
+    background-color: #eee;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.cardDetail {
+    padding: 0 16px 16px 16px;
+    animation: fadeIn 0.3s ease;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #555;
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

@@ -1,3 +1,4 @@
+Ôªøusing System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -7,66 +8,87 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. OPRAVA: Smaz·na duplicita, nech·v·me jen to spr·vnÈ p¯ipojenÌ "DefaultConnection"
+// 1. OPRAVA: Smaz√°na duplicita, nech√°v√°me jen to spr√°vn√© p≈ôipojen√≠ "DefaultConnection"
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") 
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
-// 2. JWT Autentizace (Pokud ji zatÌm nem·te nastavenou v appsettings, m˘ûe to h·zet chybu, viz nÌûe)
+// ADD CORS CONFIGURATION - FIX PORT TO 5173 ‚¨áÔ∏è
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowViteApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173")  // Changed from 5174 to 5173
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
+// 2. JWT Autentizace (Pokud ji zat√≠m nem√°te nastavenou v appsettings, m≈Ø≈æe to h√°zet chybu, viz n√≠≈æe)
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-// Oöet¯enÌ, aby aplikace nespadla, pokud klÌË v nastavenÌ chybÌ (prozatÌm)
+// O≈°et≈ôen√≠, aby aplikace nespadla, pokud kl√≠ƒç v nastaven√≠ chyb√≠ (prozat√≠m)
 var keyString = jwtSettings["Key"];
 if (!string.IsNullOrEmpty(keyString)) 
 {
     var key = Encoding.ASCII.GetBytes(keyString);
 
-    builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidateLifetime = true,
-            ValidIssuer = jwtSettings["Issuer"],
-            ValidAudience = jwtSettings["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(key)
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                builder.Configuration.GetSection("AppSettings:Token").Value ?? "TohleJeMujSuperDlouhyTajnyKlicKteryMaMinimalneSedesatCtyriZnakyProBezpecnostAplikaceZabochyt123")),
+
+            // Pro zjednodu≈°en√≠ ve v√Ωvoji vypneme kontrolu Issuer a Audience
+            ValidateIssuer = false,
+            ValidateAudience = false
         };
     });
 }
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// 3. OPRAVA: SlouËenÌ nastavenÌ pro API i pro Clienta
+// 3. OPRAVA: Slouƒçen√≠ nastaven√≠ pro API i pro Clienta
 
-app.UseDefaultFiles(); // D˘leûitÈ pro frontend
-app.UseStaticFiles();  // D˘leûitÈ pro frontend
+app.UseDefaultFiles(); // D≈Øle≈æit√© pro frontend
+app.UseStaticFiles();  // D≈Øle≈æit√© pro frontend
 
-// Swagger zapneme jen p¯i v˝voji
+// Swagger zapneme jen p≈ôi v√Ωvoji
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// DISABLE HTTPS REDIRECT IN DEVELOPMENT - only use in production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
-// Po¯adÌ je d˘leûitÈ: Nejd¯Ìv zjistit KDO to je (AuthN), pak CO m˘ûe dÏlat (AuthZ)
+app.UseRouting();
+
+// ENABLE CORS HERE - MUST BE BEFORE Authentication/Authorization ‚¨áÔ∏è
+app.UseCors("AllowViteApp");
+
+// Po≈ôad√≠ je d≈Øle≈æit√©: Nejd≈ô√≠v zjistit KDO to je (AuthN), pak CO m≈Ø≈æe dƒõlat (AuthZ)
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// 4. OPRAVA: Toto zajistÌ, ûe kdyû adresa nenÌ API, poöle se uûivateli frontend (React/Blazor)
+// 4. OPRAVA: Toto zajist√≠, ≈æe kdy≈æ adresa nen√≠ API, po≈°le se u≈æivateli frontend (React/Blazor)
 app.MapFallbackToFile("/index.html");
 
 app.Run();

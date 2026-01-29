@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+bin/
+obj/
+
 # User-specific files
 *.rsuser
 *.suo
@@ -416,3 +419,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+Zabochyt/.vs/Zabochyt/CopilotIndices/18.0.988.22099/CodeChunks.db
+/Zabochyt/.vs
+Zabochyt/.vs/Zabochyt.slnx/v18/DocumentLayout.backup.json
+Zabochyt/.vs/Zabochyt.slnx/v18/.suo
+/Zabochyt/.vs
