@@ -10,5 +10,6 @@ public class Registration
     public int TimeSlotId { get; set; }
     public TimeSlot TimeSlot { get; set; } = null!;
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    // Controller používá RegisteredAt
+    public DateTime RegisteredAt { get; set; } = DateTime.UtcNow;
 }

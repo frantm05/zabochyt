@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
             }
         } catch (error) {
             console.error("Login error:", error);
-            throw error; // Bublání chyby do UI
+            throw error; 
         }
     };
 

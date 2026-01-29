@@ -1,25 +1,52 @@
-﻿// Převede backend formát (TimeSlot) na frontend formát
+﻿import { jwtDecode } from 'jwt-decode';
+
+// Pomocná funkce pro získání ID přihlášeného uživatele z tokenu
+const getCurrentUserId = () => {
+    const token = localStorage.getItem('zabochyt_token');
+    if (!token) return null;
+    try {
+        const decoded = jwtDecode(token);
+        // Backend používá standardní claim "nameid" nebo "sub" pro ID
+        return decoded.nameid || decoded.sub || decoded.id;
+    } catch {
+        return null;
+    }
+};
+
 export const mapShiftFromApi = (slot) => {
-    // slot.start je např. "2024-05-01T18:00:00"
+    const currentUserId = getCurrentUserId();
+
+    // Konverze času
     const startDate = new Date(slot.start);
     const endDate = new Date(slot.end);
 
-    // Formátování času na HH:MM
     const formatTime = (date) => date.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
-
-    // Získání YYYY-MM-DD pro input type="date"
     const dateString = startDate.toISOString().split('T')[0];
+
+    // Získání seznamu dobrovolníků z "Registrations"
+    // Backend vrací: Registrations: [{ user: { nickname: '...', phone: '...' } }, ...]
+    const volunteersList = slot.registrations
+        ? slot.registrations.map(reg => ({
+            id: reg.userId,
+            name: reg.user?.nickname || 'Neznámý',
+            phone: reg.user?.phone || ''
+        }))
+        : [];
+
+    // Zjištění, zda jsem přihlášen (hledáme své ID v registracích)
+    // Porovnáváme jako String, abychom se vyhnuli problémům int vs string
+    const isSignedUp = slot.registrations?.some(r => String(r.userId) === String(currentUserId));
 
     return {
         id: slot.id,
-        date: dateString, // Pro seskupování v kalendáři
+        date: dateString,
         startTime: formatTime(startDate),
         endTime: formatTime(endDate),
         location: slot.location,
-        capacity: slot.maxCapacity, // Pozor na názvy z backendu
-        currentVolunteers: slot.currentCapacity || slot.volunteers?.length || 0,
+        capacity: slot.maxCapacity, // Backend má MaxCapacity
+        currentVolunteers: slot.registrations ? slot.registrations.length : 0, // Počítáme délku pole registrací
         note: slot.note,
-        volunteers: slot.volunteers || [], // Seznam lidí
-        isSignedUp: slot.isSignedUp // Backend by měl ideálně poslat, jestli jsem přihlášen
+        volunteers: volunteersList,
+        isSignedUp: !!isSignedUp // Boolean
     };
 };

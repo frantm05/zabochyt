@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using Zabochyt.Server.Data;
 using Zabochyt.Server.Models;
 
@@ -12,6 +9,7 @@ namespace Zabochyt.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] // Důležité: Vyžaduje přihlášení
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -21,88 +19,70 @@ namespace Zabochyt.Server.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        // GET: api/users/profile
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetProfile()
         {
-            return await _context.Users.ToListAsync();
-        }
+            // 1. Získání ID z tokenu (bezpečnější metoda)
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                         ?? User.FindFirst("sub")?.Value;
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
-        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("Nelze identifikovat uživatele z tokenu.");
+            }
+
+            // 2. Načtení uživatele z DB
+            // Předpokládám, že Id je int. Pokud je string/Guid, odstraň int.Parse
+            if (!int.TryParse(userId, out int id)) return BadRequest("Špatný formát ID.");
+
             var user = await _context.Users.FindAsync(id);
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound("Uživatel nenalezen.");
             }
 
-            return user;
+            // 3. Odeslání dat ve formátu, který čeká frontend
+            // (Včetně statistik - zatím natvrdo nebo dopočítané)
+            var response = new
+            {
+                email = user.Email,
+                nickname = user.Nickname,
+                phone = user.Phone,
+                avatarColor = "#2e7d32", // Pokud nemáš v DB, pošleme default
+                shiftsCompleted = 0,     // TODO: Dopočítat z DB
+                totalHours = 0           // TODO: Dopočítat z DB
+            };
+
+            return Ok(response);
         }
 
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        // PUT: api/users/profile (Uložení změn)
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto dto)
         {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userId, out int id)) return BadRequest();
 
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
             var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            if (user == null) return NotFound();
 
-            _context.Users.Remove(user);
+            // Aktualizace polí
+            user.Nickname = dto.Nickname;
+            user.Phone = dto.Phone;
+            // AvatarColor tu zatím asi nemáš v modelu User, tak ho ignorujeme nebo přidej do DB
+
             await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(new { message = "Profil aktualizován" });
         }
+    }
 
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
+    // Pomocná třída pro data z frontendu
+    public class UpdateProfileDto
+    {
+        public string Nickname { get; set; }
+        public string Phone { get; set; }
+        public string AvatarColor { get; set; }
     }
 }

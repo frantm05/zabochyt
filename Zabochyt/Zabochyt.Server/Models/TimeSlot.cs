@@ -4,16 +4,20 @@
     {
         public int Id { get; set; }
 
-        public string Location { get; set; }
-        public string Description  { get; set; }
+        public string Location { get; set; } = string.Empty;
 
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        // Frontend posílá "note", Controller čeká "Note"
+        public string? Note { get; set; }
 
-        public int Capacity { get; set; }
+        // Controller používá "Start" a "End"
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+
+        // Controller používá "MaxCapacity"
+        public int MaxCapacity { get; set; }
+
         public bool IsOpen { get; set; } = true;
 
         public ICollection<Registration> Registrations { get; set; } = new List<Registration>();
     }
-
 }

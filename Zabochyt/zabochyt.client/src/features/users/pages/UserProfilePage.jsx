@@ -26,14 +26,18 @@ const UserProfilePage = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await api.get('/users/profile');
+                const response = await api.get('/users/profile'); 
+
+                const data = response.data;
+
                 setProfile({
-                    nickname: response.data.nickname,
-                    email: response.data.email,
-                    phone: response.data.phone,
-                    avatarColor: response.data.avatarColor || '#2e7d32',
-                    shiftsCompleted: response.data.shiftsCompleted || 0,
-                    totalHours: response.data.totalHours || 0
+                    nickname: data.nickname || '',
+                    email: data.email || '',
+                    phone: data.phone || '',
+                    avatarColor: data.avatarColor || '#2e7d32',
+                    // Backend zatím neposílá statistiky, dáme defaultně 0, aby to nepadalo
+                    shiftsCompleted: data.shiftsCompleted || 0,
+                    totalHours: data.totalHours || 0
                 });
             } catch (err) { console.error(err); }
             finally { setLoading(false); }
@@ -53,7 +57,7 @@ const UserProfilePage = () => {
         e.preventDefault();
         setIsSaving(true);
         try {
-            await api.put('/users/profile', profile);
+            await api.put('/users/profile', profile);  // ✅ Fixed (removed user.id)
             alert("Uloženo!");
         } catch (err) {
             alert("Chyba ukládání.");
