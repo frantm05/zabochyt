@@ -1,11 +1,9 @@
-﻿import { useState } from 'react';
-import api from '../../../services/api'; // Importujeme naši axios instanci
+﻿import { useState, useEffect } from 'react';
 import styles from './CreateShiftForm.module.css';
 
 const CreateShiftForm = ({ onShiftCreated }) => {
-    // Defaultní hodnoty
     const [formData, setFormData] = useState({
-        date: '',
+        date: new Date().toISOString().split('T')[0], 
         startTime: '18:00',
         endTime: '22:00',
         location: 'Lokalita A - Rybník',
@@ -13,7 +11,17 @@ const CreateShiftForm = ({ onShiftCreated }) => {
         note: ''
     });
 
+    const [isOvernight, setIsOvernight] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // Automatická detekce přelomu dne
+    useEffect(() => {
+        if (formData.startTime && formData.endTime) {
+            setIsOvernight(formData.endTime < formData.startTime);
+        } else {
+            setIsOvernight(false);
+        }
+    }, [formData.startTime, formData.endTime]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,26 +33,24 @@ const CreateShiftForm = ({ onShiftCreated }) => {
         setIsSubmitting(true);
 
         try {
-            // Simulace API volání (nahraďte později reálným endpointem)
-            // await api.post('/shifts', formData);
-
-            // FAKE: Čekáme a vrátíme objekt, jako by ho vrátil backend
+            // Simulace API volání
             await new Promise(r => setTimeout(r, 600));
+
             const newShift = {
                 id: Date.now(),
                 ...formData,
-                currentVolunteers: 0
+                isOvernight: isOvernight,
+                currentVolunteers: 0,
+                volunteers: []
             };
 
-            // Callback do rodiče, aby se aktualizoval seznam
             onShiftCreated(newShift);
 
-            // Reset formuláře
-            setFormData(prev => ({ ...prev, note: '' })); // Necháme čas/lokalitu pro rychlé zadání dalšího dne
+            setFormData(prev => ({ ...prev, note: '' }));
             alert("Termín vypsán! 🐸");
 
         } catch (error) {
-            console.error("Chyba při vytváření směny", error);
+            console.error("Chyba", error);
             alert("Nepodařilo se vytvořit směnu.");
         } finally {
             setIsSubmitting(false);
@@ -58,7 +64,7 @@ const CreateShiftForm = ({ onShiftCreated }) => {
             <form onSubmit={handleSubmit}>
                 <div className={styles.row}>
                     <div className={styles.col}>
-                        <label className={styles.label}>Datum</label>
+                        <label className={styles.label}>Datum začátku</label>
                         <input
                             type="date"
                             name="date"
@@ -85,7 +91,7 @@ const CreateShiftForm = ({ onShiftCreated }) => {
 
                 <div className={styles.row}>
                     <div className={styles.col}>
-                        <label className={styles.label}>Od</label>
+                        <label className={styles.label}>Začátek</label>
                         <input
                             type="time"
                             name="startTime"
@@ -95,17 +101,25 @@ const CreateShiftForm = ({ onShiftCreated }) => {
                             onChange={handleChange}
                         />
                     </div>
+
                     <div className={styles.col}>
-                        <label className={styles.label}>Do</label>
-                        <input
-                            type="time"
-                            name="endTime"
-                            required
-                            className={styles.input}
-                            value={formData.endTime}
-                            onChange={handleChange}
-                        />
+                        <label className={styles.label}>
+                            Konec
+                            {isOvernight && <span style={{ color: '#d32f2f', marginLeft: 5, fontSize: '0.8em' }}>(+1 den)</span>}
+                        </label>
+                        <div style={{ position: 'relative' }}>
+                            <input
+                                type="time"
+                                name="endTime"
+                                required
+                                className={styles.input}
+                                style={isOvernight ? { borderColor: '#ff9800', backgroundColor: '#fffbf0' } : {}}
+                                value={formData.endTime}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
+
                     <div className={styles.col} style={{ flex: 0.5 }}>
                         <label className={styles.label}>Kapacita</label>
                         <input
@@ -123,7 +137,7 @@ const CreateShiftForm = ({ onShiftCreated }) => {
 
                 <div className={styles.row}>
                     <div className={styles.col}>
-                        <label className={styles.label}>Poznámka pro dobrovolníky</label>
+                        <label className={styles.label}>Poznámka</label>
                         <textarea
                             name="note"
                             rows="2"

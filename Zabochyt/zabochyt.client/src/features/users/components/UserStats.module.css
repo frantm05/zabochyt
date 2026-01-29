@@ -18,7 +18,6 @@
     align-items: center;
 }
 
-/* Zvýraznění karty s hodností */
 .rankCard {
     border-color: var(--color-primary);
     background: linear-gradient(to bottom right, white, #f1f8e9);

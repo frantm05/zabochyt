@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from 'react';
-import { useAuth } from '../../auth/AuthContext'; // Abychom věděli, kdo je přihlášen
+import { useAuth } from '../../auth/AuthContext';
 import UserStats from '../components/UserStats';
 import styles from './UserProfilePage.module.css';
 import clsx from 'clsx';
@@ -7,15 +7,13 @@ import clsx from 'clsx';
 const AVATAR_COLORS = ['#2e7d32', '#1976d2', '#d32f2f', '#ed6c02', '#9c27b0', '#555555'];
 
 const UserProfilePage = () => {
-    const { user } = useAuth(); // Získáme info z kontextu (email, role)
+    const { user } = useAuth(); 
 
-    // Stav formuláře
     const [profile, setProfile] = useState({
         nickname: '',
         email: '',
         phone: '',
         avatarColor: '#2e7d32',
-        // Statistiky (read-only)
         shiftsCompleted: 0,
         totalHours: 0
     });
@@ -33,7 +31,7 @@ const UserProfilePage = () => {
                 email: user?.email || 'email@example.com',
                 phone: '777 123',
                 avatarColor: '#2e7d32',
-                shiftsCompleted: 6, // Příklad: uživatel už má rank "Skokan"
+                shiftsCompleted: 6, 
                 totalHours: 24
             });
             setLoading(false);
@@ -62,7 +60,6 @@ const UserProfilePage = () => {
 
     if (loading) return <div>Načítám profil...</div>;
 
-    // Iniciály pro avatar
     const initials = profile.nickname
         ? profile.nickname.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
         : '??';
