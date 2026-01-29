@@ -2,6 +2,7 @@
 import VolunteerShiftList from '../schedule/components/VolunteerShiftList';
 import ShiftControls from '../schedule/components/ShiftControls'; // Znovupoužití!
 import api from '../../services/api';
+import { mapShiftFromApi } from '../../utils/dateMapper';
 
 const DashboardPage = () => {
     const [availableShifts, setAvailableShifts] = useState([]);
@@ -12,19 +13,25 @@ const DashboardPage = () => {
     const [viewMode, setViewMode] = useState('list');
     const [currentDate, setCurrentDate] = useState(new Date());
 
+    // 1. NAČTENÍ VOLNÝCH TERMÍNŮ
     useEffect(() => {
-        const fetchData = async () => {
-            // FAKE DATA
-            await new Promise(r => setTimeout(r, 600));
-            setAvailableShifts([
-                { id: 101, date: '2024-05-01', startTime: '17:00', endTime: '21:00', location: 'Lokalita A', capacity: 5, currentVolunteers: 1, note: '' },
-                { id: 102, date: '2024-05-02', startTime: '17:00', endTime: '21:00', location: 'Lokalita A', capacity: 3, currentVolunteers: 3, note: 'Už je plno' },
-                { id: 103, date: '2024-05-05', startTime: '18:00', endTime: '02:00', location: 'Lokalita C', capacity: 4, currentVolunteers: 0, note: 'Holínky nutné' },
-                { id: 104, date: '2024-06-10', startTime: '18:00', endTime: '02:00', location: 'Lokalita B', capacity: 4, currentVolunteers: 0, note: 'Letní akce' },
-            ]);
-            setLoading(false);
+        const fetchShifts = async () => {
+            try {
+                // Backend endpoint pro volné termíny (nebo všechny a filtrovat)
+                const response = await api.get('/timeslots');
+                const formatted = response.data
+                    .map(mapShiftFromApi)
+                    // Zobrazíme jen ty, kde uživatel NENÍ přihlášený (pokud to backend posílá)
+                    .filter(s => !s.isSignedUp);
+
+                setAvailableShifts(formatted);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
         };
-        fetchData();
+        fetchShifts();
     }, []);
 
     const uniqueLocations = useMemo(() => [...new Set(availableShifts.map(s => s.location))], [availableShifts]);

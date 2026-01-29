@@ -3,6 +3,7 @@ import { useAuth } from '../../auth/AuthContext';
 import UserStats from '../components/UserStats';
 import styles from './UserProfilePage.module.css';
 import clsx from 'clsx';
+import api from '../../../services/api';
 
 const AVATAR_COLORS = ['#2e7d32', '#1976d2', '#d32f2f', '#ed6c02', '#9c27b0', '#555555'];
 
@@ -24,21 +25,21 @@ const UserProfilePage = () => {
     // Načtení dat (Simulace API GET /profile)
     useEffect(() => {
         const fetchProfile = async () => {
-            await new Promise(r => setTimeout(r, 600));
-
-            setProfile({
-                nickname: 'Testovací objekt číslo 1',
-                email: user?.email || 'email@example.com',
-                phone: '777 123',
-                avatarColor: '#2e7d32',
-                shiftsCompleted: 6, 
-                totalHours: 24
-            });
-            setLoading(false);
+            try {
+                const response = await api.get('/users/profile');
+                setProfile({
+                    nickname: response.data.nickname,
+                    email: response.data.email,
+                    phone: response.data.phone,
+                    avatarColor: response.data.avatarColor || '#2e7d32',
+                    shiftsCompleted: response.data.shiftsCompleted || 0,
+                    totalHours: response.data.totalHours || 0
+                });
+            } catch (err) { console.error(err); }
+            finally { setLoading(false); }
         };
-
-        if (user) fetchProfile();
-    }, [user]);
+        fetchProfile();
+    }, []);
 
     const handleChange = (e) => {
         setProfile({ ...profile, [e.target.name]: e.target.value });
@@ -51,11 +52,14 @@ const UserProfilePage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSaving(true);
-        // Simulace API PUT /profile
-        await new Promise(r => setTimeout(r, 800));
-
-        setIsSaving(false);
-        alert("Profil byl úspěšně aktualizován! 🐸");
+        try {
+            await api.put('/users/profile', profile);
+            alert("Uloženo!");
+        } catch (err) {
+            alert("Chyba ukládání.");
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     if (loading) return <div>Načítám profil...</div>;
