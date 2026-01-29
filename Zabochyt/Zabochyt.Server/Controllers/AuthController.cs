@@ -28,7 +28,7 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
         if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
-            return BadRequest("Uživatel s tímto e-mailem už existuje.");
+          return BadRequest("Uživatel s tímto e-mailem už existuje.");
 
         var user = new User
         {
