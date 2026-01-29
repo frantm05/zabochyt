@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -7,85 +6,87 @@ using System.Text;
 using Zabochyt.Server.Data;
 using Zabochyt.Server.DTO.Auth;
 using Zabochyt.Server.Models;
-using BCrypt.Net;
 
-namespace Zabochyt.Server.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class AuthController : ControllerBase
+namespace Zabochyt.Server.Controllers
 {
-    private readonly AppDbContext _context;
-    private readonly IConfiguration _config;
-
-    public AuthController(AppDbContext context, IConfiguration config)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : ControllerBase
     {
-        _context = context;
-        _config = config;
-    }
+        private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
 
-    [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterDto dto)
-    {
-        if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
-          return BadRequest("Uživatel s tímto e-mailem už existuje.");
-
-        var user = new User
+        public AuthController(AppDbContext context, IConfiguration configuration)
         {
-            Name = dto.Name,
-            Email = dto.Email,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-            Role = UserRole.Volunteer
-        };
+            _context = context;
+            _configuration = configuration;
+        }
 
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
-
-        return Ok(new { message = "Uživatel zaregistrován" });
-    }
-
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDto dto)
-    {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
-            return Unauthorized("Špatný email nebo heslo");
-
-        var token = GenerateJwtToken(user);
-
-        return Ok(new AuthResponseDto
+        [HttpPost("register")]
+        public async Task<ActionResult<User>> Register(RegisterDto dto)
         {
-            Token = token,
-            Name = user.Name,
-            Email = user.Email
-        });
-    }
+            // 1. Vytvoření uživatele
+            // POZOR: Heslo by se mělo hashovat! Pro demo ukládáme jako plain text (nebezpečné pro produkci).
+            // V reálu použij: BCrypt.Net.BCrypt.HashPassword(dto.Password)
 
-    private string GenerateJwtToken(User user)
-    {
-        var jwtSettings = _config.GetSection("Jwt");
-        var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+            var user = new User
+            {
+                Email = dto.Email,
+                Nickname = dto.Nickname, // Oprava: Name -> Nickname
+                PasswordHash = dto.Password,
+                Phone = dto.Phone,       // Oprava: Přidán telefon
+                Role = "dobrovolnik"     // Oprava: Enum -> string
+            };
 
-        var claims = new[]
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Registrace úspěšná" });
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<AuthResponseDto>> Login(LoginDto dto)
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.Name),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role.ToString())
-        };
+            // 1. Hledání uživatele podle emailu
+            var user = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
 
-        var tokenDescriptor = new SecurityTokenDescriptor
+            // 2. Ověření hesla (zde porovnáváme plain text, v reálu VerifyHash)
+            if (user == null || user.PasswordHash != dto.Password)
+            {
+                return BadRequest("Neplatný email nebo heslo.");
+            }
+
+            // 3. Vytvoření JWT Tokenu
+            string token = CreateToken(user);
+
+            return Ok(new AuthResponseDto { Token = token });
+        }
+
+        private string CreateToken(User user)
         {
-            Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpireMinutes"])),
-            Issuer = jwtSettings["Issuer"],
-            Audience = jwtSettings["Audience"],
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
+            // Získání tajného klíče z konfigurace
+            var secretKey = _configuration.GetSection("AppSettings:Token").Value;
+            if (string.IsNullOrEmpty(secretKey)) secretKey = "SuperTajnyKlicProZabochytKteryMusiBytDlouhyAProtoHoTedJesteProdlouziimeAbyMelDostBitu123";
+            // Vytvoření Claims (údaje v tokenu)
+            List<Claim> claims = new List<Claim>
+            {
+                // Důležité: ID uživatele posíláme jako NameIdentifier
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Nickname), // Oprava: Name -> Nickname
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)      // Role je teď string
+            };
 
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-        return tokenHandler.WriteToken(token);
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
 }

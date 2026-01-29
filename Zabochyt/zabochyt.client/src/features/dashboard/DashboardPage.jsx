@@ -17,13 +17,8 @@ const DashboardPage = () => {
     useEffect(() => {
         const fetchShifts = async () => {
             try {
-                // Backend endpoint pro volné termíny (nebo všechny a filtrovat)
                 const response = await api.get('/timeslots');
-                const formatted = response.data
-                    .map(mapShiftFromApi)
-                    // Zobrazíme jen ty, kde uživatel NENÍ přihlášený (pokud to backend posílá)
-                    .filter(s => !s.isSignedUp);
-
+                const formatted = response.data.map(mapShiftFromApi);
                 setAvailableShifts(formatted);
             } catch (err) {
                 console.error(err);
@@ -78,9 +73,31 @@ const DashboardPage = () => {
     }, [availableShifts, locationFilter, viewMode, currentDate]);
 
     const handleSignUp = async (shiftId) => {
-        // await api.post(`/shifts/${shiftId}/signup`);
-        alert(`Úspěšně přihlášeno!`);
-        setAvailableShifts(prev => prev.filter(s => s.id !== shiftId));
+        try {
+            await api.post(`/timeslots/${shiftId}/signup`);
+
+            alert(`Úspěšně přihlášeno! 🐸`);
+
+            // ZMĚNA: Nemažeme shift ze seznamu, ale aktualizujeme jeho stav
+            setAvailableShifts(prev => prev.map(shift => {
+                if (shift.id === shiftId) {
+                    return {
+                        ...shift,
+                        isSignedUp: true,
+                        currentVolunteers: shift.currentVolunteers + 1
+                    };
+                }
+                return shift;
+            }));
+        } catch (error) {
+            console.error("Chyba přihlášení:", error);
+            // Lepší error handling
+            if (error.response && error.response.status === 400) {
+                alert(error.response.data || "Nelze se přihlásit (chyba dat).");
+            } else {
+                alert("Nepodařilo se přihlásit.");
+            }
+        }
     };
 
     return (

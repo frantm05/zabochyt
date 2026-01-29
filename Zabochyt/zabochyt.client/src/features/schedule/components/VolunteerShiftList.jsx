@@ -6,9 +6,7 @@ const VolunteerShiftList = ({ shifts, variant = 'available', onAction }) => {
     const [expandedId, setExpandedId] = useState(null);
 
     if (!shifts || shifts.length === 0) {
-        return <div className={styles.emptyState}>
-            {variant === 'available' ? 'Žádné volné termíny v tomto zobrazení.' : 'Zatím nemáte naplánované žádné směny.'}
-        </div>;
+        return <div className={styles.emptyState}>Žádné termíny k zobrazení.</div>;
     }
 
     // 1. Seskupení podle MĚSÍCŮ
@@ -66,17 +64,18 @@ const VolunteerShiftList = ({ shifts, variant = 'available', onAction }) => {
                                         <div className={styles.shiftsStack}>
                                             {dayShifts.map(shift => {
                                                 const isFull = shift.currentVolunteers >= shift.capacity;
-                                                const canSignUp = variant === 'available' && !isFull;
                                                 const isExpanded = expandedId === shift.id;
+
+                                                const cardStyleClass = shift.isSignedUp
+                                                    ? styles.cardSigned
+                                                    : (variant === 'available' ? styles.cardAvailable : styles.cardSigned);
+
+                                                const canSignUp = variant === 'available' && !isFull && !shift.isSignedUp;
 
                                                 return (
                                                     <div
                                                         key={shift.id}
-                                                        className={clsx(
-                                                            styles.shiftCard,
-                                                            variant === 'available' ? styles.cardAvailable : styles.cardSigned,
-                                                            isExpanded && styles.expanded
-                                                        )}
+                                                        className={clsx(styles.shiftCard, cardStyleClass, isExpanded && styles.expanded)}
                                                         onClick={() => toggleExpand(shift.id)}
                                                     >
                                                         <div className={styles.cardHeader}>
@@ -90,14 +89,13 @@ const VolunteerShiftList = ({ shifts, variant = 'available', onAction }) => {
                                                                     👥 {shift.currentVolunteers}/{shift.capacity}
                                                                 </span>
 
-                                                                {/* Tlačítko akce */}
                                                                 {variant === 'available' ? (
                                                                     <button
                                                                         className={clsx(styles.actionBtn, canSignUp ? styles.btnSignUp : styles.btnDisabled)}
                                                                         onClick={(e) => { e.stopPropagation(); canSignUp && onAction(shift.id); }}
                                                                         disabled={!canSignUp}
                                                                     >
-                                                                        {isFull ? 'Plno' : 'Přihlásit'}
+                                                                        {shift.isSignedUp ? '✅ Zapsáno' : (isFull ? 'Plno' : 'Přihlásit')}
                                                                     </button>
                                                                 ) : (
                                                                     <button
@@ -110,10 +108,16 @@ const VolunteerShiftList = ({ shifts, variant = 'available', onAction }) => {
                                                             </div>
                                                         </div>
 
-                                                        {/* Detail (Poznámka) */}
-                                                        {isExpanded && shift.note && (
+                                                        {isExpanded && (
                                                             <div className={styles.cardDetail}>
-                                                                <div className={styles.note}>ℹ️ {shift.note}</div>
+                                                                {shift.note && <div className={styles.note}>ℹ️ {shift.note}</div>}
+
+                                                                {shift.volunteers && shift.volunteers.length > 0 && (
+                                                                    <div style={{ marginTop: 10, fontSize: '0.85rem', color: '#666' }}>
+                                                                        <strong>Kdo jde: </strong>
+                                                                        {shift.volunteers.map(v => v.name).join(', ')}
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         )}
                                                     </div>
