@@ -12,8 +12,8 @@ using Zabochyt.Server.Data;
 namespace Zabochyt.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260129154041_prvniVytvoreniTabulek")]
-    partial class prvniVytvoreniTabulek
+    [Migration("20260129221922_databaze")]
+    partial class databaze
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

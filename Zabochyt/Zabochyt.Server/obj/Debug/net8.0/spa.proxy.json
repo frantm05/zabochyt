@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:62231",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\..\\zabochyt.client",
+"WorkingDirectory": "C:\\Users\\tomik\\source\\repos\\zabochytTom\\Zabochyt\\Zabochyt.Server\\..\\zabochyt.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

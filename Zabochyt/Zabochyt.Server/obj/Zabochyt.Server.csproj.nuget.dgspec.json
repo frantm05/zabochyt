@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj": {}
+    "C:\\Users\\tomik\\source\\repos\\zabochytTom\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj": {
+    "C:\\Users\\tomik\\source\\repos\\zabochytTom\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj",
+        "projectUniqueName": "C:\\Users\\tomik\\source\\repos\\zabochytTom\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj",
         "projectName": "Zabochyt.Server",
-        "projectPath": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj",
-        "packagesPath": "C:\\Users\\LukasTomanek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LukasTomanek\\source\\repos\\frantm05\\zabochyt\\Zabochyt\\Zabochyt.Server\\obj\\",
+        "projectPath": "C:\\Users\\tomik\\source\\repos\\zabochytTom\\Zabochyt\\Zabochyt.Server\\Zabochyt.Server.csproj",
+        "packagesPath": "C:\\Users\\tomik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tomik\\source\\repos\\zabochytTom\\Zabochyt\\Zabochyt.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LukasTomanek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tomik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -71,11 +71,21 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.0, )"
             },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

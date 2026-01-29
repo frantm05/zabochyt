@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Zabochyt.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class prvniVytvoreniTabulek : Migration
+    public partial class databaze : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
