@@ -1,0 +1,107 @@
+﻿.controlsContainer {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-color: #fff;
+    min-width: 200px;
+}
+
+.viewSwitcher {
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 6px;
+    padding: 2px;
+    gap: 2px;
+}
+
+.viewBtn {
+    border: none;
+    background: transparent;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s;
+}
+
+    .viewBtn:hover {
+        background: rgba(0,0,0,0.05);
+        color: #333;
+    }
+
+.active {
+    background: white;
+    color: var(--color-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-weight: 600;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dateLabel {
+    font-weight: 700;
+    min-width: 150px;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--color-text-main);
+}
+
+.navBtn {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.todayBtn {
+    background: transparent;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .controlsContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .viewSwitcher, .navigation {
+        justify-content: center;
+    }
+}

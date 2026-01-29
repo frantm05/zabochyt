@@ -1,0 +1,25 @@
+.pageContainer {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: var(--spacing-md);
+}
+
+.title {
+    margin: 0;
+    color: var(--color-primary);
+}
+
+.subtitle {
+    margin: 0;
+    color: #666;
+    font-weight: normal;
+    font-size: 1rem;
+}
