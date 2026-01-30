@@ -10,9 +10,7 @@ namespace Zabochyt.Server.Models
         public string PasswordHash { get; set; } = string.Empty;
         public string? Phone { get; set; }
         public string Role { get; set; } = "dobrovolnik";
-
-        // NOVÉ: Přidáme sloupec pro barvu
-        public string AvatarColor { get; set; } = "#2e7d32"; // Defaultní zelená
+        public string? AvatarColor { get; set; } = "#2e7d32"; // Defaultní zelená
 
         public ICollection<Registration> Registrations { get; set; } = new List<Registration>();
     }
